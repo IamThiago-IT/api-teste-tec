@@ -38,7 +38,7 @@ export const SuggestionsService = {
       include: { goals: true, wallet: true },
     });
     if (!client) return null;
-    const walletTotal = client.wallet?.reduce((s, w) => s + (w.totalWealth || 0), 0) || 0;
+    const walletTotal = client.wallet?.reduce((s: number, w: { totalWealth: number | null }) => s + (w.totalWealth || 0), 0) || 0;
     const now = new Date();
 
     const suggestions: any[] = [];
